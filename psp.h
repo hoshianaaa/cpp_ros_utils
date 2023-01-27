@@ -74,7 +74,7 @@ class PSP_mode
 
              std_msgs::String msg2;
              msg2.data = list2string(mode_list_);
-             list_pub.publish(msg);
+             list_pub.publish(msg2);
          }
 
          std::string get_value()
