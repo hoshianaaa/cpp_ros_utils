@@ -2,6 +2,7 @@
 #include"sensor_msgs/JointState.h"
 #include"std_msgs/String.h"
 #include <iostream>
+#include "cpp_sampler/cpp_utils.h"
 
 
 class PSP
@@ -42,19 +43,6 @@ class PSP
         ros::Timer timer;
         std::string data_, name_;
 };
-
-std::string list2string(std::vector<std::string> list)
-{
-  std::string ret;
-  int size = list.size();
-  for (int i=0;i<size;i++)
-  {
-    ret += list[i];
-    if (i!=size-1)
-      ret += ",";
-  }
-  return ret;
-}
 
 class PSP_mode
 {
