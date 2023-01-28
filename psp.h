@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 #ifndef _PSP_H_
 #define _PSP_H_
+=======
+>>>>>>> origin/master
 #include"ros/ros.h"
 #include"sensor_msgs/JointState.h"
 #include"std_msgs/String.h"
@@ -45,6 +48,7 @@ class PSP
         std::string data_, name_;
 };
 
+<<<<<<< HEAD
 class PSP_num
 {
     public:
@@ -85,6 +89,8 @@ class PSP_num
         double data_;
 };
 
+=======
+>>>>>>> origin/master
 class PSP_mode
 {
     public:
@@ -164,4 +170,7 @@ class Basic
         ros::Subscriber sub;
         ros::Timer timer;
 };
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> origin/master
