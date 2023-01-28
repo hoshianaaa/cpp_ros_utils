@@ -6,6 +6,7 @@
 #include"std_msgs/String.h"
 #include <iostream>
 #include "cpp_utils/cpp_utils.h"
+#include "ros/time.h"
 
 class PSP
 {
@@ -15,6 +16,9 @@ class PSP
             pub = nh_.advertise<std_msgs::String>(name + "_state", 1);
             sub = nh_.subscribe(name, 1000, &PSP::callback, this);
             timer = nh_.createTimer(ros::Duration(0.1), &PSP::main_loop, this);
+
+            ros::Duration(0, 300000).sleep();
+
             nh_.getParam(name,data_);
             name_ = name;
          }
@@ -54,6 +58,7 @@ class PSP_num
             pub = nh_.advertise<std_msgs::Float64>(name + "_state", 1);
             sub = nh_.subscribe(name, 1000, &PSP_num::callback, this);
             timer = nh_.createTimer(ros::Duration(0.1), &PSP_num::main_loop, this);
+            ros::Duration(0, 300000).sleep();
             nh_.getParam(name,data_);
             name_ = name;
          }
@@ -96,6 +101,7 @@ class PSP_mode
             sub = nh_.subscribe(name, 1000, &PSP_mode::callback, this);
             timer = nh_.createTimer(ros::Duration(0.1), &PSP_mode::main_loop, this);
 
+            ros::Duration(0, 300000).sleep();
             data_ = mode_list[0];
             nh_.getParam(name,data_);
 
