@@ -1,3 +1,5 @@
+#ifndef _PSP_H_
+#define _PSP_H_
 #include"ros/ros.h"
 #include"sensor_msgs/JointState.h"
 #include"std_msgs/String.h"
@@ -41,6 +43,46 @@ class PSP
         ros::Subscriber sub;
         ros::Timer timer;
         std::string data_, name_;
+};
+
+class PSP_num
+{
+    public:
+        PSP_num(ros::NodeHandle *nodehandle, std::string name):nh_(*nodehandle)
+         {
+            pub = nh_.advertise<std_msgs::Float64>(name + "_state", 1);
+            sub = nh_.subscribe(name, 1000, &PSP_num::callback, this);
+            timer = nh_.createTimer(ros::Duration(0.1), &PSP_num::main_loop, this);
+            nh_.getParam(name,data_);
+            name_ = name;
+         }
+
+          void callback(const std_msgs::Float64& msg)
+         {
+           data_ = msg.data;
+           nh_.setParam(name_,data_);
+         }
+
+         void main_loop(const ros::TimerEvent &)
+         {
+             std_msgs::Float64 msg;
+             msg.data = data_;
+             pub.publish(msg);
+         }
+
+         double get_value()
+         {
+            return data_;
+         }
+
+
+    private:
+        ros::NodeHandle nh_;
+        ros::Publisher pub;
+        ros::Subscriber sub;
+        ros::Timer timer;
+        std::string name_;
+        double data_;
 };
 
 class PSP_mode
@@ -122,3 +164,4 @@ class Basic
         ros::Subscriber sub;
         ros::Timer timer;
 };
+#endif
