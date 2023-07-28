@@ -18,7 +18,7 @@ class PSP
         }
         PSP(ros::NodeHandle *nodehandle, std::string name):nh_(*nodehandle)
          {
-            pub = nh_.advertise<std_msgs::String>(name + "_state", 1);
+            pub = nh_.advertise<std_msgs::String>(name + "/state", 1);
             sub = nh_.subscribe(name, 1000, &PSP::callback, this);
             timer = nh_.createTimer(ros::Duration(0.1), &PSP::main_loop, this);
 
@@ -61,7 +61,7 @@ class PSP_num
         PSP_num(){}
         PSP_num(ros::NodeHandle *nodehandle, std::string name):nh_(*nodehandle)
          {
-            pub = nh_.advertise<std_msgs::Float64>(name + "_state", 1);
+            pub = nh_.advertise<std_msgs::Float64>(name + "/state", 1);
             sub = nh_.subscribe(name, 1000, &PSP_num::callback, this);
             timer = nh_.createTimer(ros::Duration(0.1), &PSP_num::main_loop, this);
             ros::Duration(0, 300000).sleep();
@@ -106,8 +106,8 @@ class PSP_mode
         PSP_mode(){}
         PSP_mode(ros::NodeHandle *nodehandle, std::string name, std::vector<std::string> mode_list):nh_(*nodehandle)
          {
-            pub = nh_.advertise<std_msgs::String>(name + "_state", 1);
-            list_pub = nh_.advertise<std_msgs::String>(name + "_list", 1);
+            pub = nh_.advertise<std_msgs::String>(name + "/state", 1);
+            list_pub = nh_.advertise<std_msgs::String>(name + "/list", 1);
             sub = nh_.subscribe(name, 1000, &PSP_mode::callback, this);
             timer = nh_.createTimer(ros::Duration(0.1), &PSP_mode::main_loop, this);
 
