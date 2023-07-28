@@ -12,6 +12,10 @@
 class PSP
 {
     public:
+        PSP()
+        {
+
+        }
         PSP(ros::NodeHandle *nodehandle, std::string name):nh_(*nodehandle)
          {
             pub = nh_.advertise<std_msgs::String>(name + "_state", 1);
