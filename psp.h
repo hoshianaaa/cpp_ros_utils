@@ -58,6 +58,7 @@ class PSP
 class PSP_num
 {
     public:
+        PSP_num(){}
         PSP_num(ros::NodeHandle *nodehandle, std::string name):nh_(*nodehandle)
          {
             pub = nh_.advertise<std_msgs::Float64>(name + "_state", 1);
@@ -102,6 +103,7 @@ class PSP_num
 class PSP_mode
 {
     public:
+        PSP_mode(){}
         PSP_mode(ros::NodeHandle *nodehandle, std::string name, std::vector<std::string> mode_list):nh_(*nodehandle)
          {
             pub = nh_.advertise<std_msgs::String>(name + "_state", 1);
@@ -153,6 +155,7 @@ class PSP_mode
 class Basic
 {
     public:
+        Basic(){}
         Basic(ros::NodeHandle *nodehandle):nh_(*nodehandle)
          {
             pub = nh_.advertise<std_msgs::String>("/data", 5);
